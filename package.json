@@ -1,0 +1,34 @@
+{
+  "name": "ehuskarta",
+  "version": "1.0.0",
+  "description": "![Karta över E-huset](image.png)",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danieladugyan/EHusKarta.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danieladugyan/EHusKarta/issues"
+  },
+  "homepage": "https://github.com/danieladugyan/EHusKarta#readme",
+  "dependencies": {
+    "three": "^0.152.2"
+  },
+  "devDependencies": {
+    "@types/three": "^0.152.0",
+    "eslint": "^8.41.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "typescript": "^5.0.4",
+    "vite": "^4.3.8"
+  }
+}

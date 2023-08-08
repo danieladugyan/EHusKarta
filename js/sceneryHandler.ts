@@ -1,53 +1,53 @@
-import * as THREE from 'three'
+import { ArrowHelper, BackSide, BoxGeometry, Mesh, MeshBasicMaterial, Scene, SphereGeometry, TextureLoader, Vector3 } from "three";
 
 export const scenery = {
-  scene: new THREE.Scene(),
+  scene: new Scene(),
   sphere: createSphere(),
   skybox: createSkybox(),
   arrow: createArrow(),
-}
+};
 
 export function createSkybox() {
-  const materialArray = []
-  const texture_ft = new THREE.TextureLoader().load('Skybox/front.png')
-  const texture_bk = new THREE.TextureLoader().load('Skybox/Back.jpg')
-  const texture_up = new THREE.TextureLoader().load('Skybox/up.png')
-  const texture_dn = new THREE.TextureLoader().load('Skybox/Down.jpg')
-  const texture_rt = new THREE.TextureLoader().load('Skybox/left.jpg')
-  const texture_lf = new THREE.TextureLoader().load('Skybox/right.png')
+  const materials: MeshBasicMaterial[] = [];
+  const textureFront = new TextureLoader().load('Skybox/front.png');
+  const textureBack = new TextureLoader().load('Skybox/Back.jpg');
+  const textureUp = new TextureLoader().load('Skybox/up.png');
+  const textureDown = new TextureLoader().load('Skybox/Down.jpg');
+  const textureRight = new TextureLoader().load('Skybox/left.jpg');
+  const textureLeft = new TextureLoader().load('Skybox/right.png');
 
-  materialArray.push(new THREE.MeshBasicMaterial({ map: texture_ft }))
-  materialArray.push(new THREE.MeshBasicMaterial({ map: texture_bk }))
-  materialArray.push(new THREE.MeshBasicMaterial({ map: texture_up }))
-  materialArray.push(new THREE.MeshBasicMaterial({ map: texture_dn }))
-  materialArray.push(new THREE.MeshBasicMaterial({ map: texture_rt }))
-  materialArray.push(new THREE.MeshBasicMaterial({ map: texture_lf }))
+  materials.push(new MeshBasicMaterial({ map: textureFront }));
+  materials.push(new MeshBasicMaterial({ map: textureBack }));
+  materials.push(new MeshBasicMaterial({ map: textureUp }));
+  materials.push(new MeshBasicMaterial({ map: textureDown }));
+  materials.push(new MeshBasicMaterial({ map: textureRight }));
+  materials.push(new MeshBasicMaterial({ map: textureLeft }));
 
-  for (let i = 0; i < 6; i++) materialArray[i].side = THREE.BackSide
+  for (let i = 0; i < 6; i++) materials[i].side = BackSide;
 
-  const skyboxGeo = new THREE.BoxGeometry(5000, 5000, 5000)
-  const skybox = new THREE.Mesh(skyboxGeo, materialArray)
-  return skybox
+  const skyboxGeo = new BoxGeometry(5000, 5000, 5000);
+  const skybox = new Mesh(skyboxGeo, materials);
+  return skybox;
 }
 
 export function createSphere() {
-  const geometry = new THREE.SphereGeometry(1, 8, 8)
-  const material = new THREE.MeshBasicMaterial({
+  const geometry = new SphereGeometry(1, 8, 8);
+  const material = new MeshBasicMaterial({
     color: 'lightgreen',
-  })
+  });
 
-  const sphereMesh = new THREE.Mesh(geometry, material)
-  sphereMesh.position.set(-8, -15, 7)
-  sphereMesh.scale.set(0.5, 0.5, 0.5)
+  const sphereMesh = new Mesh(geometry, material);
+  sphereMesh.position.set(-8, -15, 7);
+  sphereMesh.scale.set(0.5, 0.5, 0.5);
 
-  return sphereMesh
+  return sphereMesh;
 }
 
 export function createArrow() {
-  const dir = new THREE.Vector3(0, -1, 0)
-  const orgin = new THREE.Vector3(0, -100, 0)
-  const length = 1
-  const hex = 'lightgreen'
+  const dir = new Vector3(0, -1, 0);
+  const orgin = new Vector3(0, -100, 0);
+  const length = 1;
+  const hex = 'lightgreen';
 
-  return new THREE.ArrowHelper(dir, orgin, length, hex)
+  return new ArrowHelper(dir, orgin, length, hex);
 }
